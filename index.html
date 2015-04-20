@@ -7,28 +7,38 @@
   <script src="app.js"></script>
   <script src="js/RestaurantsController.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
   <div class="container" ng-controller="RestaurantsCtrl">
+
+    <!-- ******* Search ******* -->
     <div class="row" ng-show="restaurants.length">
       <div class="col-md-12">
         <h4>Search Restaurants</h4>
         <form class="form-inline" role="form">
           <div class="form-group">
             <input ng-model="query" type="text" id="restaurant-name" class="form-control" placeholder="Search">
+            <select ng-model="query" id="restaurant-proper">
+              <option value="proper">Proper</option>
+              <option value="not proper">Not Proper</option>
+            </select>
           </div>
         </form>
       </div>
     </div>
+
+    <!-- ******* Results ******* -->
     <div class="row">
       <div class="col-md-12">
         <h2 ng-show="restaurants.length && filtered.length">Restaurant List</h2>
         <h2 ng-show="restaurants.length && !filtered.length">No Matches</h2>
         <ul>
           <li ng-repeat="restaurant in filtered = (restaurants | filter:query)">
-            <span ng-click="editing = true" ng-hide="editing">
-              {{restaurant.name}} - {{restaurant.type}}  in {{restaurant.location}} ({{restaurant.proper}}) <a ng-click="deleteRestaurant(restaurant)">x</a>
+              {{restaurant.name}} - {{restaurant.type}}  in {{restaurant.location}} ({{restaurant.proper}}) <span ng-click="editing = true" ng-hide="editing"><span class="glyphicon glyphicon-pencil clickable"></span> <span ng-click="deleteRestaurant(restaurant)" class="glyphicon glyphicon-remove clickable"></span>
             </span>
+
+            <!-- ******* Edit ******* -->
             <span class="form-group" ng-show="editing" ng-submit="editing = false">
               <form class="form-inline" role="form">
                 <label for="name-input">Name:</label>
@@ -46,6 +56,8 @@
           </li>
         </ul>
       </div>
+
+      <!-- ******* Add new ******* -->
       <div class="col-md-4">
         <h2>New Restaurant:</h2>
         <form ng-submit="addRestaurant()" class="form-inline" role="form">

@@ -33,32 +33,57 @@
       <div class="col-md-12">
         <h2 ng-show="restaurants.length && filtered.length">Restaurant List</h2>
         <h2 ng-show="restaurants.length && !filtered.length">No Matches</h2>
-        <ul>
-          <li ng-repeat="restaurant in filtered = (restaurants | filter:query)">
-              {{restaurant.name}} - {{restaurant.type}}  in {{restaurant.location}} ({{restaurant.proper}}) <span ng-click="editing = true" ng-hide="editing"><span class="glyphicon glyphicon-pencil clickable"></span> <span ng-click="deleteRestaurant(restaurant)" class="glyphicon glyphicon-remove clickable"></span>
-            </span>
+        <div ng-repeat="restaurant in filtered = (restaurants | filter:query)" class="row">
+          <div class="col-md-3">
+            {{restaurant.name}}
+          </div>
 
-            <!-- ******* Edit ******* -->
-            <span class="form-group" ng-show="editing" ng-submit="editing = false">
-              <form class="form-inline" role="form">
-                <label for="name-input">Name:</label>
-                <input type="text" class="form-control input-sm" ng-model="restaurant.name" placeholder="Name" id="name-input" required/>
-                <label for="type-input">Type:</label>
-                <input type="text" class="form-control input-sm" ng-model="restaurant.type" placeholder="Type of food" required/>
-                <label for="type-input">Location:</label>
-                <input type="text" class="form-control input-sm" ng-model="restaurant.location" placeholder="City, neighborhood, whatevv" required/>
-                <label for="properness-input">Proper?</label>
-                <input type="radio" class="input-sm" ng-model="restaurant.proper" value="proper">Proper
-                <input type="radio" class="input-sm" ng-model="restaurant.proper" value="not proper">Not proper<br>
-                <button class="btn btn-default btn-sm" type="submit">Save</button>
-              </form>
-            </span>
-          </li>
-        </ul>
+          <div class="col-md-3">
+            {{restaurant.type}}
+          </div>
+
+          <div class="col-md-3">
+            {{restaurant.location}}
+          </div>
+
+          <div class="col-md-3">
+            ({{restaurant.proper}}) <span ng-click="editing = true" ng-hide="editing" class="glyphicon glyphicon-pencil clickable"></span>
+            <span ng-click="deleteRestaurant(restaurant)" class="glyphicon glyphicon-remove clickable"></span>
+          </div>
+        </div>
       </div>
+    </div>
+  <!-- <ul>
+  <li ng-repeat="restaurant in filtered = (restaurants | filter:query)">
+  {{restaurant.name}} - {{restaurant.type}}  in {{restaurant.location}} ({{restaurant.proper}}) <span ng-click="editing = true" ng-hide="editing"><span class="glyphicon glyphicon-pencil clickable"></span> <span ng-click="deleteRestaurant(restaurant)" class="glyphicon glyphicon-remove clickable"></span>
+</span> -->
 
-      <!-- ******* Add new ******* -->
-      <div class="col-md-4">
+    <!-- ******* Edit ******* -->
+    <div class="row">
+      <div class="col-md-12">
+        <span class="form-group" ng-show="editing" ng-submit="editing = false">
+          <form class="form-inline" role="form">
+            <label for="name-input">Name:</label>
+            <input type="text" class="form-control input-sm" ng-model="restaurant.name" placeholder="Name" id="name-input" required/>
+            <label for="type-input">Type:</label>
+            <input type="text" class="form-control input-sm" ng-model="restaurant.type" placeholder="Type of food" required/>
+            <label for="type-input">Location:</label>
+            <input type="text" class="form-control input-sm" ng-model="restaurant.location" placeholder="City, neighborhood, whatevv" required/>
+            <label for="properness-input">Proper?</label>
+            <input type="radio" class="input-sm" ng-model="restaurant.proper" value="proper">Proper
+            <input type="radio" class="input-sm" ng-model="restaurant.proper" value="not proper">Not proper<br>
+            <button class="btn btn-default btn-sm" type="submit">Save</button>
+          </form>
+        </span>
+      </div>
+    </div>
+<!-- </li>
+</ul> -->
+
+
+    <!-- ******* Add new ******* -->
+    <div class="row">
+      <div class="col-md-12">
         <h2>New Restaurant:</h2>
         <form ng-submit="addRestaurant()" class="form-inline" role="form">
           <div class="form-group">

@@ -9,5 +9,13 @@ restaurants.controller('RestaurantsCtrl', function RestaurantsCtrl($scope) {
   $scope.deleteRestaurant = function(restaurant) {
     var index = $scope.restaurants.indexOf(restaurant);
     $scope.restaurants.splice(index, 1);
+  };
+  $scope.sortColumn = function(clickedColumn) {
+    // $scope.column = column;
+    if (!$scope.column || $scope.column[0] === '-') {
+      $scope.column = clickedColumn;
+    } else {
+      $scope.column = '-' + clickedColumn;
+    }
   }
 });

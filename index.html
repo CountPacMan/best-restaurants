@@ -32,8 +32,22 @@
     <div class="row">
       <div class="col-md-12">
         <h2 ng-show="restaurants.length && filtered.length">Restaurant List</h2>
+        <div ng-show="restaurants.length && filtered.length" class="row chart-titles">
+          <div ng-click="sortColumn('name')" class="col-md-3">
+            Name
+          </div>
+          <div ng-click="sortColumn('type')" class="col-md-3">
+            Type
+          </div>
+          <div ng-click="sortColumn('location')" class="col-md-3">
+            Location
+          </div>
+          <div ng-click="sortColumn('proper')" class="col-md-3">
+            Proper/Not proper
+          </div>
+        </div>
         <h2 ng-show="restaurants.length && !filtered.length">No Matches</h2>
-        <div ng-repeat="restaurant in filtered = (restaurants | filter:query)" class="row">
+        <div ng-repeat="restaurant in filtered = (restaurants | filter:query | orderBy:column)" class="row">
           <div class="col-md-3">
             {{restaurant.name}}
           </div>

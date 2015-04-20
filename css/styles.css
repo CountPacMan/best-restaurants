@@ -6,3 +6,7 @@ a:hover,
 ul {
   list-style-type: none;
 }
+
+.chart-titles {
+  border-bottom: solid 3px lightgrey;
+}

@@ -33,16 +33,16 @@
       <div class="col-md-12">
         <h2 ng-show="restaurants.length && filtered.length">Restaurant List</h2>
         <div ng-show="restaurants.length && filtered.length" class="row chart-titles">
-          <div ng-click="sortColumn('name')" class="col-md-3">
+          <div ng-click="sortColumn('name')" class="col-md-3 column-name">
             Name
           </div>
-          <div ng-click="sortColumn('type')" class="col-md-3">
+          <div ng-click="sortColumn('type')" class="col-md-3 column-name">
             Type
           </div>
-          <div ng-click="sortColumn('location')" class="col-md-3">
+          <div ng-click="sortColumn('location')" class="col-md-3 column-name">
             Location
           </div>
-          <div ng-click="sortColumn('proper')" class="col-md-3">
+          <div ng-click="sortColumn('proper')" class="col-md-3 column-name">
             Proper/Not proper
           </div>
         </div>
@@ -58,7 +58,7 @@
             {{restaurant.location}}
           </div>
           <div class="col-md-3">
-            ({{restaurant.proper}}) <span ng-click="editing = true" ng-hide="editing" class="glyphicon glyphicon-pencil clickable"></span>
+            {{restaurant.proper}} <span ng-click="editing = true" ng-hide="editing" class="glyphicon glyphicon-pencil clickable"></span>
             <span ng-click="deleteRestaurant(restaurant)" class="glyphicon glyphicon-remove clickable"></span>
           </div>
 
@@ -75,7 +75,7 @@
                   <input type="text" class="form-control input-sm" ng-model="restaurant.location" placeholder="City, neighborhood, whatevv" required/>
                   <label for="properness-input">Proper?</label>
                   <input type="radio" class="input-sm" ng-model="restaurant.proper" value="proper">Proper
-                  <input type="radio" class="input-sm" ng-model="restaurant.proper" value="not proper">Not proper<br>
+                  <input type="radio" class="input-sm" ng-model="restaurant.proper" value="not proper">Not proper
                   <button class="btn btn-default btn-sm" type="submit">Save</button>
                 </form>
               </span>

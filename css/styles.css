@@ -1,5 +1,6 @@
 a:hover,
-.clickable {
+.column-name:hover,
+.clickable:hover {
   cursor: pointer;
 }
 
@@ -9,4 +10,9 @@ ul {
 
 .chart-titles {
   border-bottom: solid 3px lightgrey;
+}
+
+.column-name {
+  color: green;
+  font-weight: 500;
 }
